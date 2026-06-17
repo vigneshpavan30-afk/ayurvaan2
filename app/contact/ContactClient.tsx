@@ -4,11 +4,54 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
+// Resort WhatsApp number in international format, no "+" or spaces (for wa.me).
+const ADMIN_WHATSAPP = "919391589999";
+
 export default function ContactClient() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
   const [form, setForm] = useState({ name:"", email:"", phone:"", occasion:"", date:"", message:"" });
   const set = (e: React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement|HTMLSelectElement>) =>
     setForm({ ...form, [e.target.name]: e.target.value });
+
+  const whatsappUrl = () => {
+    const text =
+      `New enquiry from ${form.name}\n` +
+      `Email: ${form.email}\n` +
+      `Phone: ${form.phone || "-"}\n` +
+      `Occasion: ${form.occasion || "-"}\n` +
+      `Preferred date: ${form.date || "-"}\n` +
+      `Message: ${form.message || "-"}`;
+    return `https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(text)}`;
+  };
+
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (sending) return;
+    setSending(true);
+    setError("");
+    // Open WhatsApp synchronously inside the click so the browser doesn't block
+    // the popup; navigate it once the enquiry is saved.
+    const waWindow = window.open("", "_blank");
+    try {
+      const res = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error(data.error || "Submission failed.");
+      if (waWindow) waWindow.location.href = whatsappUrl();
+      else window.open(whatsappUrl(), "_blank");
+      setSent(true);
+    } catch (err) {
+      if (waWindow) waWindow.close();
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setSending(false);
+    }
+  };
 
   const inputCls = "w-full border-b border-warm-200 bg-transparent py-3.5 font-sans text-sm text-black placeholder:text-warm-300 focus:border-terra-500 focus:outline-none transition-colors";
   const labelCls = "font-mono text-[8px] tracking-[0.45em] uppercase text-warm-400 block mb-2.5";
@@ -25,10 +68,10 @@ export default function ContactClient() {
             <div className="h-px w-10 bg-terra-400 mb-8" />
             <ul className="space-y-5">
               {[
-                { Icon: MapPin, label: "Address", val: "Vikas College Road, Beside Polavaram Canal, Nunna, Vijayawada, AP 521212", href: "#" },
+                { Icon: MapPin, label: "Address", val: "Vikas College Road, Beside Polavaram Canal, Nunna, Vijayawada, AP 521212", href: "https://maps.app.goo.gl/QLFkgdLpzXttPWCa7?g_st=aw" },
                 { Icon: Phone, label: "Phone",   val: "+91 93915 89999",         href: "tel:+919391589999" },
                 { Icon: Mail,  label: "Email",   val: "info@ayurvanresort.com",  href: "mailto:info@ayurvanresort.com" },
-                { Icon: Clock, label: "Hours",   val: "Daily · 7:00 AM – 10:00 PM", href: "#" },
+                { Icon: Clock, label: "Hours",   val: "Open 24/7", href: "#" },
               ].map(({ Icon, label, val, href }) => (
                 <li key={label} className="flex gap-4 items-start">
                   <div className="w-8 h-8 border border-warm-200 flex items-center justify-center shrink-0 mt-0.5">
@@ -37,7 +80,7 @@ export default function ContactClient() {
                   <div>
                     <span className="font-mono text-[8px] tracking-[0.4em] uppercase text-warm-400 block mb-0.5">{label}</span>
                     {href !== "#"
-                      ? <a href={href} className="font-sans text-sm text-warm-700 hover:text-terra-500 transition-colors leading-relaxed">{val}</a>
+                      ? <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noopener noreferrer" : undefined} className="font-sans text-sm text-warm-700 hover:text-terra-500 transition-colors leading-relaxed">{val}</a>
                       : <p className="font-sans text-sm text-warm-700 leading-relaxed">{val}</p>}
                   </div>
                 </li>
@@ -57,7 +100,7 @@ export default function ContactClient() {
               <>
                 <span className="font-mono text-[9px] tracking-[0.45em] uppercase text-terra-500 block mb-4">Enquiry Form</span>
                 <h2 className="font-serif text-4xl text-black font-normal mb-10" style={{ letterSpacing: "-0.01em" }}>Send an Enquiry</h2>
-                <form onSubmit={e => { e.preventDefault(); setSent(true); }} className="space-y-8">
+                <form onSubmit={onSubmit} className="space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div><label className={labelCls}>Full Name</label><input type="text" name="name" value={form.name} onChange={set} placeholder="Your name" className={inputCls} required /></div>
                     <div><label className={labelCls}>Email Address</label><input type="email" name="email" value={form.email} onChange={set} placeholder="your@email.com" className={inputCls} required /></div>
@@ -75,8 +118,11 @@ export default function ContactClient() {
                     <label className={labelCls}>Message</label>
                     <textarea name="message" value={form.message} onChange={set} rows={5} placeholder="Tell us about your plans, guest count, or specific requirements..." className={`${inputCls} resize-none`} />
                   </div>
-                  <button type="submit" className="font-sans text-[10px] tracking-[0.22em] uppercase px-10 py-4 bg-black text-white hover:bg-terra-500 transition-colors duration-300">
-                    Send Enquiry
+                  {error && (
+                    <p className="font-sans text-sm text-terra-600">{error}</p>
+                  )}
+                  <button type="submit" disabled={sending} className="font-sans text-[10px] tracking-[0.22em] uppercase px-10 py-4 bg-black text-white hover:bg-terra-500 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                    {sending ? "Sending…" : "Send Enquiry"}
                   </button>
                 </form>
               </>
@@ -93,7 +139,7 @@ export default function ContactClient() {
       </section>
 
       <div className="h-80 border-t border-warm-200">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3825.3!2d80.6!3d16.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35f089a3e1c8f7%3A0x5e5a84e6f62e3742!2sAyurvan%20Resort%20%26%20Convention!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+        <iframe src="https://maps.google.com/maps?q=Ayurvan%20Resort%20%26%20Convention%2C%20Nunna%2C%20Andhra%20Pradesh%20521212&output=embed"
           width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Ayurvan Location" />
       </div>
     </>

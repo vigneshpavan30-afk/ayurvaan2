@@ -96,9 +96,14 @@ export default function Footer() {
           <ul className="space-y-4">
             <li className="flex gap-3 items-start">
               <MapPin className="w-3.5 h-3.5 text-terra-400 mt-0.5 shrink-0" />
-              <span className="font-sans text-sm text-warm-600 leading-relaxed">
+              <a
+                href="https://maps.app.goo.gl/QLFkgdLpzXttPWCa7?g_st=aw"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-sans text-sm text-warm-600 leading-relaxed hover:text-terra-500 transition-colors"
+              >
                 Vikas College Road, Nunna, Vijayawada, NTR District, AP 521212
-              </span>
+              </a>
             </li>
             <li className="flex gap-3 items-center">
               <Phone className="w-3.5 h-3.5 text-terra-400 shrink-0" />

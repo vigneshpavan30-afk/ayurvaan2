@@ -106,7 +106,7 @@ export const treatments = [
     category: "social",
   },
   {
-    name: "Photography Session",
+    name: "Photography Locations",
     description: "Capture the beauty of Ayurvan's landscapes, architecture, and natural light in dedicated photoshoot arenas.",
     duration: "60 min",
     category: "creative",
