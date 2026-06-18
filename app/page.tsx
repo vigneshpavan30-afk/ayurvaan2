@@ -12,19 +12,19 @@ import { testimonials } from "@/data/testimonials";
 
 /* ─── data ─────────────────────────────────────────────── */
 const venues = [
-  { n:"01", title:"Convention Hall",  sub:"500 guests · Grand ballroom",    img:"https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=900&q=85", href:"/experiences" },
-  { n:"02", title:"Under The Woods",  sub:"4,000 sq ft · Open canopy",      img:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=900&q=85", href:"/experiences" },
-  { n:"03", title:"Open Lawn",        sub:"7,000 sq ft · Outdoor events",   img:"https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=85", href:"/experiences" },
-  { n:"04", title:"Gokulam",          sub:"Heritage · Intimate gatherings", img:"https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&q=85", href:"/experiences" },
+  { n:"01", title:"Convention Hall",  sub:"500 guests · Grand ballroom",    img:"/img/convention-ext.jpg", href:"/experiences" },
+  { n:"02", title:"Under The Woods",  sub:"4,000 sq ft · Open canopy",      img:"/img/woods-seating.jpg", href:"/experiences" },
+  { n:"03", title:"Open Lawn",        sub:"7,000 sq ft · Outdoor events",   img:"/img/lawn-event.jpg", href:"/experiences" },
+  { n:"04", title:"Gokulam",          sub:"Heritage · Intimate gatherings", img:"/img/gokulam-garland.jpg", href:"/experiences" },
 ];
 
 const gallery = [
-  "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=700&q=85",
-  "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=700&q=85",
-  "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=85",
-  "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700&q=85",
-  "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=700&q=85",
-  "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=700&q=85",
+  "/img/gokulam-garland.jpg",
+  "/img/cottage-ext-2.jpg",
+  "/img/hall-banquet.jpg",
+  "/img/pool-dusk.jpg",
+  "/img/aerial-night.jpg",
+  "/img/garden-pergola.jpg",
 ];
 
 /* ─── RAW 3D TILT CARD ──────────────────────────────────── */
@@ -325,7 +325,7 @@ export default function HomePage() {
               {/* Main image — 3D tilt on hover */}
               <Card3D className="absolute right-0 top-0 w-[82%] aspect-[4/3]">
                 <div className="relative w-full h-full overflow-hidden">
-                  <Image src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=85"
+                  <Image src="/img/woods-fairy.jpg"
                     alt="Mango groves" fill className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/10" />
                 </div>
@@ -334,7 +334,7 @@ export default function HomePage() {
               {/* Floating sub-image — CSS float animation */}
               <div className="float-a absolute -bottom-4 left-0 w-48 h-48 border-4 border-white overflow-hidden z-10
                 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.3)]">
-                <Image src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&q=85"
+                <Image src="/img/cottage-ext-1.jpg"
                   alt="Cottage" fill className="object-cover" />
               </div>
 
@@ -437,7 +437,7 @@ export default function HomePage() {
       {/* ══════════════════════════════════════════════
           PARALLAX CINEMATIC BREAK
       ══════════════════════════════════════════════ */}
-      <ParallaxSection src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&q=90">
+      <ParallaxSection src="/img/aerial-grove.jpg">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -573,7 +573,7 @@ export default function HomePage() {
         subtitle="Whether a quiet retreat, a grand celebration, or a corporate offsite — Ayurvan holds every occasion with care."
         primaryCta={{ label: "Make a Reservation", href: "/booking" }}
         secondaryCta={{ label: "Plan an Event",     href: "/contact" }}
-        backgroundImage="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1920&q=90"
+        backgroundImage="/img/lawn-open.jpg"
       />
     </>
   );

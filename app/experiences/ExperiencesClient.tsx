@@ -8,10 +8,10 @@ import CTASection from "@/components/ui/CTASection";
 import { wellnessPackages, treatments } from "@/data/wellness";
 
 const venues = [
-  { id:"convention", n:"01", name:"Convention Hall", cap:"500 guests", size:"Grand Ballroom", desc:"Climate-controlled elegance for 500 guests. Full AV, central air conditioning, and dedicated catering.", img:"https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1200&q=90", occasions:["Weddings","Receptions","Corporate Events","Conferences","Galas"] },
-  { id:"woods", n:"02", name:"Under The Woods", cap:"Up to 200", size:"4,000 sq ft", desc:"A natural canopy of mature mango trees above 4,000 sq ft of atmospheric outdoor space — intimate and unique.", img:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&q=90", occasions:["Haldi","Mehndi","Sangeeth","Bachelor Parties","Open-air Dining"] },
-  { id:"lawn", n:"03", name:"Open Lawn", cap:"Open capacity", size:"7,000 sq ft", desc:"Seven thousand square feet of pristine lawn for destination weddings and outdoor celebrations beneath open skies.", img:"https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=90", occasions:["Destination Weddings","Cocktail Evenings","Haldi","Product Launches"] },
-  { id:"gokulam", n:"04", name:"Gokulam", cap:"Intimate", size:"Heritage Hall", desc:"Chettinad-inspired interiors — antique doors, Attangudi tiles, and a koi fish pond at the centre.", img:"https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=90", occasions:["Birthday Parties","Intimate Dinners","Engagements","Photo Sessions"] },
+  { id:"convention", n:"01", name:"Convention Hall", cap:"500 guests", size:"Grand Ballroom", desc:"Climate-controlled elegance for 500 guests. Full AV, central air conditioning, and dedicated catering.", img:"/img/hall-banquet.jpg", occasions:["Weddings","Receptions","Corporate Events","Conferences","Galas"] },
+  { id:"woods", n:"02", name:"Under The Woods", cap:"Up to 200", size:"4,000 sq ft", desc:"A natural canopy of mature mango trees above 4,000 sq ft of atmospheric outdoor space — intimate and unique.", img:"/img/woods-seating.jpg", occasions:["Haldi","Mehndi","Sangeeth","Bachelor Parties","Open-air Dining"] },
+  { id:"lawn", n:"03", name:"Open Lawn", cap:"Open capacity", size:"7,000 sq ft", desc:"Seven thousand square feet of pristine lawn for destination weddings and outdoor celebrations beneath open skies.", img:"/img/lawn-event.jpg", occasions:["Destination Weddings","Cocktail Evenings","Haldi","Product Launches"] },
+  { id:"gokulam", n:"04", name:"Gokulam", cap:"Intimate", size:"Heritage Hall", desc:"Chettinad-inspired interiors — antique doors, Attangudi tiles, and a koi fish pond at the centre.", img:"/img/gokulam-day.jpg", occasions:["Birthday Parties","Intimate Dinners","Engagements","Photo Sessions"] },
 ];
 
 function TiltCard({ children, className="" }: { children: React.ReactNode; className?: string }) {

@@ -13,14 +13,6 @@ const values = [
   { n:"04", title:"Light Footprint",     body:"Built sustainably within nature — Ayurvan's presence on the land is deliberate, considered, and minimal." },
 ];
 
-const timeline = [
-  { year:"2018", title:"The Vision",      body:"A dream to create a nature-integrated retreat without disturbing a single mango tree." },
-  { year:"2019", title:"Breaking Ground", body:"Construction begins guided by a core principle: every structure must complement, not compete with, the landscape." },
-  { year:"2020", title:"Cottages Rise",   body:"American-style wooden cottages take form, nestled organically within the ancient grove." },
-  { year:"2021", title:"Doors Open",      body:"Ayurvan welcomes its first guests — families, couples, and corporate groups into its natural embrace." },
-  { year:"2023", title:"Expanding",       body:"Gokulam opens; bird enclosure expanded; new tropical species planted across the grounds." },
-];
-
 function TiltCard({ children, className="" }: { children: React.ReactNode; className?: string }) {
   const x = useMotionValue(0); const y = useMotionValue(0);
   const rotX = useSpring(useTransform(y,[-0.5,0.5],[6,-6]),{stiffness:300,damping:30});
@@ -50,7 +42,7 @@ export default function AboutClient() {
       {/* Hero with parallax */}
       <section ref={heroRef} className="relative h-[75vh] min-h-[560px] overflow-hidden flex items-end">
         <motion.div style={{ y: bgY }} className="absolute inset-0 scale-110">
-          <Image src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&q=90"
+          <Image src="/img/aerial-day.jpg"
             alt="Mango groves" fill className="object-cover" />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
@@ -85,11 +77,11 @@ export default function AboutClient() {
           <TiltCard className="relative h-[460px]">
             <motion.div initial={{opacity:0,y:24}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{duration:0.8}}
               className="absolute right-0 top-0 w-4/5 aspect-[4/5] overflow-hidden shadow-3d" style={{transform:"translateZ(0)"}}>
-              <Image src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=85" alt="Ayurvan" fill className="object-cover" />
+              <Image src="/img/gokulam-day.jpg" alt="Ayurvan" fill className="object-cover" />
             </motion.div>
             <motion.div animate={{y:[0,-8,0]}} transition={{duration:5,repeat:Infinity,ease:"easeInOut"}}
               className="absolute bottom-0 left-0 w-44 h-44 border-4 border-white shadow-3d-warm overflow-hidden z-10">
-              <Image src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=85" alt="Interior" fill className="object-cover" />
+              <Image src="/img/heritage-pavilion.jpg" alt="Interior" fill className="object-cover" />
             </motion.div>
           </TiltCard>
         </div>
@@ -97,9 +89,9 @@ export default function AboutClient() {
 
       {/* Image strip */}
       <div className="flex h-72 md:h-96">
-        {["https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=85",
-          "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=600&q=85",
-          "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=85"].map((src, i) => (
+        {["/img/cottage-ext-1.jpg",
+          "/img/pool-dusk.jpg",
+          "/img/gokulam-garland.jpg"].map((src, i) => (
           <motion.div key={i} initial={{opacity:0,scaleY:0.9}} whileInView={{opacity:1,scaleY:1}} viewport={{once:true}} transition={{delay:i*0.1,duration:0.7}}
             className="relative flex-1 overflow-hidden group">
             <Image src={src} alt="" fill className="object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-110" />
@@ -124,33 +116,11 @@ export default function AboutClient() {
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="bg-white py-28">
-        <div className="max-w-screen-xl mx-auto px-6 lg:px-10">
-          <SectionHeading eyebrow="Journey" title="Our Milestones" className="mb-16" />
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-0">
-            {timeline.map((t, i) => (
-              <motion.div key={t.year} initial={{opacity:0,y:24}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*0.12,duration:0.7}}
-                className="relative pl-6 md:pl-0 md:pt-6 pb-10 md:pb-0 border-l md:border-l-0 md:border-t-2 border-warm-200 group hover:border-terra-400 transition-colors duration-400">
-                <motion.div
-                  initial={{scale:0}} whileInView={{scale:1}} viewport={{once:true}} transition={{delay:i*0.12+0.3,type:"spring"}}
-                  className="absolute left-0 md:left-auto md:top-0 top-0 w-2.5 h-2.5 -translate-x-1/2 md:-translate-y-1/2 bg-warm-300 rotate-45 group-hover:bg-terra-500 transition-colors duration-400" />
-                <div className="md:pt-5 md:pr-5">
-                  <span className="font-mono text-xs text-terra-400 block mb-2">{t.year}</span>
-                  <h3 className="font-serif text-lg text-black font-normal mb-2">{t.title}</h3>
-                  <p className="font-sans text-sm text-warm-500 leading-relaxed">{t.body}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <CTASection eyebrow="Experience Ayurvan" title="Come and Stay a While"
         subtitle="Reserve your dates and discover what it means to truly rest within nature."
         primaryCta={{ label:"Book a Stay", href:"/booking" }}
         secondaryCta={{ label:"Contact Us", href:"/contact" }}
-        backgroundImage="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=90" />
+        backgroundImage="/img/aerial-night.jpg" />
     </>
   );
 }

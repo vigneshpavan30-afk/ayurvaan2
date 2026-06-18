@@ -5,20 +5,20 @@ import Image from "next/image";
 import { X, ZoomIn } from "lucide-react";
 import { useRef } from "react";
 
-const cats = ["All", "Nature", "Rooms", "Venues", "Dining", "Events"];
+const cats = ["All", "Nature", "Rooms", "Venues", "Leisure"];
 const items = [
-  { src:"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=85", cat:"Nature",  title:"Ancient Mango Grove",  aspect:"portrait"  },
-  { src:"https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=85", cat:"Rooms",   title:"Wooden Cottage",       aspect:"landscape" },
-  { src:"https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=85", cat:"Venues",  title:"Convention Hall",      aspect:"landscape" },
-  { src:"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=85", cat:"Dining",  title:"Garden Restaurant",    aspect:"portrait"  },
-  { src:"https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=85", cat:"Nature",  title:"Open Green Lawn",      aspect:"landscape" },
-  { src:"https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=85", cat:"Rooms",   title:"Deluxe Suite",         aspect:"landscape" },
-  { src:"https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=85", cat:"Rooms",   title:"Heritage Room",        aspect:"portrait"  },
-  { src:"https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&q=85", cat:"Dining",  title:"Outdoor Dining",       aspect:"landscape" },
-  { src:"https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=85", cat:"Nature",  title:"Tropical Gardens",     aspect:"portrait"  },
-  { src:"https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=85", cat:"Venues",  title:"Under The Woods",     aspect:"landscape" },
-  { src:"https://images.unsplash.com/photo-1545579133-99bb5ad189be?w=800&q=85", cat:"Events",  title:"Family Celebration",   aspect:"portrait"  },
-  { src:"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=85", cat:"Nature",  title:"Sunrise at Ayurvan",  aspect:"landscape" },
+  { src:"/img/aerial-day.jpg",      cat:"Nature",  title:"Aerial Over Ayurvan",  aspect:"landscape" },
+  { src:"/img/cottage-ext-1.jpg",   cat:"Rooms",   title:"Wooden Cottage",       aspect:"landscape" },
+  { src:"/img/garden-walkway.jpg",  cat:"Nature",  title:"Mango Grove Path",     aspect:"portrait"  },
+  { src:"/img/convention-ext-2.jpg", cat:"Venues", title:"Convention Hall",      aspect:"landscape" },
+  { src:"/img/aerial-pool.jpg",     cat:"Leisure", title:"Pool From Above",      aspect:"landscape" },
+  { src:"/img/lawn-open.jpg",       cat:"Nature",  title:"Open Green Lawn",      aspect:"landscape" },
+  { src:"/img/pool-dusk.jpg",       cat:"Leisure", title:"Poolside at Dusk",     aspect:"landscape" },
+  { src:"/img/room-ensuite.jpg",    cat:"Rooms",   title:"Garden Suite",         aspect:"landscape" },
+  { src:"/img/aerial-grove.jpg",    cat:"Nature",  title:"Grove & River",        aspect:"landscape" },
+  { src:"/img/woods-tents.jpg",     cat:"Venues",  title:"Under The Woods",      aspect:"landscape" },
+  { src:"/img/nature-grove.jpg",    cat:"Nature",  title:"Mango Orchard",        aspect:"landscape" },
+  { src:"/img/aerial-night.jpg",    cat:"Leisure", title:"Twilight Aerial",      aspect:"landscape" },
 ];
 
 function TiltImg({ src, title }: { src: string; title: string }) {

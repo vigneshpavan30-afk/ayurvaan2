@@ -89,7 +89,7 @@ export default function ContactClient() {
           </motion.div>
         </div>
         <div className="relative min-h-[300px]">
-          <Image src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=1200&q=90" alt="Resort" fill className="object-cover" />
+          <Image src="/img/convention-ext-2.jpg" alt="Resort" fill className="object-cover" />
         </div>
       </section>
 

@@ -25,7 +25,7 @@ export const wellnessPackages: WellnessPackage[] = [
     ],
     price: 22000,
     category: "retreat",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+    image: "/img/woods-fairy.jpg",
   },
   {
     id: "celebration-package",
@@ -42,7 +42,7 @@ export const wellnessPackages: WellnessPackage[] = [
     ],
     price: 18000,
     category: "celebration",
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+    image: "/img/event-stage-night.jpg",
   },
   {
     id: "family-getaway",
@@ -59,7 +59,7 @@ export const wellnessPackages: WellnessPackage[] = [
     ],
     price: 28000,
     category: "family",
-    image: "https://images.unsplash.com/photo-1545579133-99bb5ad189be?w=800&q=80",
+    image: "/img/gokulam-garland.jpg",
   },
   {
     id: "corporate-retreat",
@@ -76,7 +76,7 @@ export const wellnessPackages: WellnessPackage[] = [
     ],
     price: 0,
     category: "corporate",
-    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=800&q=80",
+    image: "/img/conference.jpg",
   },
 ];
 

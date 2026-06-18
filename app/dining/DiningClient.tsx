@@ -30,7 +30,7 @@ export default function DiningClient() {
           </motion.div>
         </div>
         <div className="relative min-h-[360px] order-1 lg:order-2">
-          <Image src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=90"
+          <Image src="/img/woods-fairy.jpg"
             alt="Garden dining" fill className="object-cover" />
         </div>
       </section>
@@ -53,7 +53,7 @@ export default function DiningClient() {
             <Button href="/contact" variant="outline" arrow>Reserve a Table</Button>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden">
-            <Image src="https://images.unsplash.com/photo-1547592180-85f173990554?w=800&q=85"
+            <Image src="/img/dining-outdoor.jpg"
               alt="Farm to table" fill className="object-cover" />
           </div>
         </div>
@@ -65,9 +65,9 @@ export default function DiningClient() {
           <SectionHeading eyebrow="Where We Dine" title="Restaurants & Spaces" className="mb-12" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-l border-t border-warm-200">
             {[
-              { name: "Garden Restaurant",   type: "All-day", desc: "Dine beneath mango canopies with garden views — the menu celebrates seasonal Andhra produce.", img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=85" },
-              { name: "Outdoor Lawn Dining", type: "Special occasions", desc: "Open-air dining on the sprawling green lawn — from dawn breakfasts to star-lit evening meals.", img: "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=700&q=85" },
-              { name: "In-Cottage Dining",   type: "24-hour", desc: "Complete privacy — a curated menu delivered to your private deck at any hour.", img: "https://images.unsplash.com/photo-1565299543923-37dd37887442?w=700&q=85" },
+              { name: "Garden Restaurant",   type: "All-day", desc: "Dine beneath mango canopies with garden views — the menu celebrates seasonal Andhra produce.", img: "/img/woods-seating.jpg" },
+              { name: "Outdoor Lawn Dining", type: "Special occasions", desc: "Open-air dining on the sprawling green lawn — from dawn breakfasts to star-lit evening meals.", img: "/img/lawn-dining.jpg" },
+              { name: "In-Cottage Dining",   type: "24-hour", desc: "Complete privacy — a curated menu delivered to your private deck at any hour.", img: "/img/cottage-ext-2.jpg" },
             ].map((s, i) => (
               <motion.div key={s.name}
                 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}

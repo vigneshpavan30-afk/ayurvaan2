@@ -113,7 +113,7 @@ export default function RoomsClient() {
         subtitle="Our accommodations fill quickly during festive and wedding seasons."
         primaryCta={{ label:"Check Availability", href:"/booking" }}
         secondaryCta={{ label:"Enquire", href:"/contact" }}
-        backgroundImage="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1920&q=90" />
+        backgroundImage="/img/cottage-moonlit.jpg" />
     </>
   );
 }
