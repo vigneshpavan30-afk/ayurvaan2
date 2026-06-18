@@ -33,7 +33,7 @@ function TiltCard({ children, className="" }: { children: React.ReactNode; class
 
 export default function ExperiencesClient() {
   return (
-    <>
+    <div className="lato-preview">
       <section className="pt-[72px] bg-warm-50">
         <div className="max-w-screen-xl mx-auto px-6 lg:px-10 pt-20 pb-16 border-b border-warm-200">
           <motion.div initial={{opacity:0,y:24}} animate={{opacity:1,y:0}} transition={{duration:0.9}}>
@@ -133,6 +133,6 @@ export default function ExperiencesClient() {
         subtitle="Our events team will craft a celebration as unique as the occasion itself."
         primaryCta={{ label:"Start Planning", href:"/contact" }}
         secondaryCta={{ label:"View Rooms", href:"/rooms" }} />
-    </>
+    </div>
   );
 }

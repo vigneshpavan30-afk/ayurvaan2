@@ -24,6 +24,14 @@
   ::-webkit-scrollbar-thumb { background: #c96830; border-radius: 2px; }
 }
 
+/* ── LATO PREVIEW (Experiences page) ──────────────────────
+   Scoped font swap so the client can review Lato for the
+   body / sans text. Serif headings + mono labels unchanged. */
+.lato-preview,
+.lato-preview .font-sans {
+  font-family: "Lato", system-ui, sans-serif !important;
+}
+
 /* ── HERO VIDEO SIMULATION ────────────────────────────────
    3 images cross-fade with Ken Burns zoom/pan — identical
    to what video looks like at this scale                   */
